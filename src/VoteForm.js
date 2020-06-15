@@ -5,10 +5,10 @@ import { withRouter } from 'react-router';
 import Input from './Components/UI/Input/Input';
 
 
-
 class VoteForm extends Component{
     constructor(props){
       super(props);
+
       // this.state = {
       //     name: '',
       //     email: '',
@@ -110,6 +110,8 @@ class VoteForm extends Component{
               touched: false
             },
             question1: {
+              value: 'this one',
+              displayValue: 'This one',
               elementType: 'select',
               elementConfig: {
                 type: 'text',
