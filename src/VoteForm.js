@@ -20,7 +20,7 @@ class VoteForm extends Component{
       // }
       this.state = {
           controls:{
-            name:'This name'( {
+            name: {
               elementType: 'input',
               elementConfig: {
                 type: 'text',
@@ -32,7 +32,7 @@ class VoteForm extends Component{
               },
               valid: false,
               touched: false
-              }),
+              },
             email: {
               elementType: 'input',
               elementConfig: {
@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-            question1: {
+            'Are you the main grocery shopper in your household?': {
               value: 'this one',
               displayValue: 'This one',
               elementType: 'select',
@@ -134,7 +134,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            courses: {
+            'How often do you do grocery shopping per week?': {
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -165,7 +165,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            question3: {
+            'Have you ever used technology to do your grocery shopping?': {
               elementType: 'select',
               elementConfig: {
                 type: 'text',
