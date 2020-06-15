@@ -222,7 +222,7 @@ class VoteForm extends Component{
     inputChangeHandler = (event, controlName) => {
         this.setState({validationState: null});
         let array;
-        if (controlName === 'question1'){
+        if (controlName === 'question2'){
           array = this.state.controls[controlName].value;
           array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
         }
@@ -230,7 +230,7 @@ class VoteForm extends Component{
             ...this.state.controls,
             [controlName]: {
                 ...this.state.controls[controlName],
-                value: controlName === 'question1'? array : event.target.value,
+                value: controlName === 'question2'? array : event.target.value,
                 valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
@@ -243,7 +243,7 @@ class VoteForm extends Component{
       const target = event.target;
       let value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
-      if (name === 'question1'){
+      if (name === 'question2'){
         value = this.state.questions;
         value.indexOf(target.value) === -1? value.push(target.value):value.splice(value.indexOf(target.value), 1);
       }
@@ -257,7 +257,7 @@ class VoteForm extends Component{
             count++
           }
         } 
-        return count >= 5? false : true;
+        return count >= 7? false : true;
     // if(this.state.name.length>0 && 
     //     this.state.email.length>0 && 
     //     this.state.gender.length>0 && 
