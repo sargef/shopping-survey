@@ -72,7 +72,7 @@ class FullResult extends Component{
     countVotes(){
       let counts = {};
       this.state.survey.map((data) => {
-        for (let course of data.question2){
+        for (let course of data.courses){
           counts[course] = counts[course]+1 || 1;
         }
       });
