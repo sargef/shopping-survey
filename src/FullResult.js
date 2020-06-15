@@ -20,7 +20,7 @@ class FullResult extends Component{
         this.state = {
           survey: [],
           visible: false,
-          question2: [],
+          courses: [],
           maxNume: 1,
           loading: true,
           redirect: false
@@ -84,7 +84,7 @@ class FullResult extends Component{
               maxNum = i;
             }
         }
-      this.setState({question2: counts, maxNum: count});
+      this.setState({courses: counts, maxNum: count});
     }
 
     logout(){
@@ -95,7 +95,7 @@ class FullResult extends Component{
        let countResults = [];
        let courseId = 0;
        this.state.loading = true;
-       for (let course in this.state.question2){
+       for (let course in this.state.courses){
          courseId++;
           countResults.push(
             <Results
@@ -103,7 +103,7 @@ class FullResult extends Component{
               key = {courseId}
               maxNum = {this.state.maxNum}
               courseName = {course}
-              courseCount = {this.state.question2[course]}
+              courseCount = {this.state.courses[course]}
             />          
           );
           this.state.loading = false; 
