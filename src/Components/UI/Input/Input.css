@@ -1,13 +1,16 @@
 .Input {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
 }
 
-.Label {
+Label {
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
+    color: black;
+    margin-left: 15px;
+    font-size: 16px;
 }
 
 .InputElement {
@@ -27,7 +30,6 @@
   	border-bottom: 1px solid #34495e;
   	outline: none;
   	font: 300 20px 'Ubuntu', sans-serif;
-  	padding: 20px;
   	color: #34495e;
 
 }
