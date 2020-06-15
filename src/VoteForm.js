@@ -20,8 +20,7 @@ class VoteForm extends Component{
       // }
       this.state = {
           controls:{
-            name:  {
-              displayValue: 'this one',
+            name:'This name'[ {
               elementType: 'input',
               elementConfig: {
                 type: 'text',
@@ -33,7 +32,7 @@ class VoteForm extends Component{
               },
               valid: false,
               touched: false
-              },
+              }],
             email: {
               elementType: 'input',
               elementConfig: {
