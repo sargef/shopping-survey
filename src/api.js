@@ -10,7 +10,7 @@ export async function getSurveys(){
                     throw err;
                 })
             }else {
-                let err = {errorMessage: 'Please try again later. Server is not responding.'};
+                let err = {errorMessage: 'Please try again later. The server is not responding.'};
                 throw err;
             }
     }
@@ -34,7 +34,7 @@ export async function createSurvey(val){
                     throw err;
                 })
             }else {
-                let err = {errorMessage: 'Please try again later. Server is not responding.'};
+                let err = {errorMessage: 'Please try again later. The server is not responding.'};
                 throw err;
             }
         }
@@ -55,7 +55,7 @@ export async function removeSurvey(id){
                     throw err;
                 })
             }else {
-                let err = {errorMessage: 'Please try again later. Server is not responding.'};
+                let err = {errorMessage: 'Please try again later. The server is not responding.'};
                 throw err;
             }
         }
@@ -80,7 +80,7 @@ export async function updateSurvey(survey){
                     throw err;
                 })
             }else {
-                let err = {errorMessage: 'Please try again later. Server is not responding.'};
+                let err = {errorMessage: 'Please try again later. The server is not responding.'};
                 throw err;
             }
         }

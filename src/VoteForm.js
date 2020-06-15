@@ -62,8 +62,8 @@ class VoteForm extends Component{
                     displayValue: 'Male'
                   },
                   {
-                    value: 'Prefer not to state',
-                    displayValue: 'Prefer not to state'
+                    value: 'Prefer not to say',
+                    displayValue: 'Prefer not to say'
                   }
                 ]
               },
@@ -109,31 +109,19 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-            courses: {
-              elementType: 'multi-select',
+            question1: {
+              elementType: 'select',
               elementConfig: {
                 type: 'text',
                 placeholder: 'Select',
                 options: [
                   {
-                    value: 'Python Django',
-                    displayValue: 'Python Django'
+                    value: 'Yes',
+                    displayValue: 'Yes'
                   },
                   {
-                    value: 'Ruby On Rails',
-                    displayValue: 'Ruby On Rails'
-                  },
-                  {
-                    value: 'NodeJS',
-                    displayValue: 'NodeJS'
-                  },
-                  {
-                    value: 'Machine Learning',
-                    displayValue: 'Machine Learning'
-                  },
-                  {
-                    value: 'SQL',
-                    displayValue: 'SQL'
+                    value: 'No',
+                    displayValue: 'No'
                   }
                 ]
               },
@@ -144,19 +132,60 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            note: {
-              elementType: 'textarea',
+            question2: {
+              elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Enter text...'
+                placeholder: 'Select',
+                options: [
+                  {
+                    value: '0-1',
+                    displayValue: '0-1'
+                  },
+                  {
+                    value: '2-3',
+                    displayValue: '2-3'
+                  },
+                  {
+                    value: '4-5',
+                    displayValue: '4-5'
+                  },
+                  {
+                    value: '6+',
+                    displayValue: '6+'
+                  }
+                ]
               },
-              value: '',
+              value: [],
               validation: {
-                required: false
+                required: true
               },
               valid: false,
-              touched: false
-            }
+              touched: false,
+            },
+            question3: {
+              elementType: 'select',
+              elementConfig: {
+                type: 'text',
+                placeholder: 'Select',
+                options: [
+                  {
+                    value: 'Yes',
+                    displayValue: 'Yes'
+                  },
+                  {
+                    value: 'No',
+                    displayValue: 'No'
+                  }
+                ]
+              },
+              value: [],
+              validation: {
+                required: true
+              },
+              valid: false,
+              touched: false,
+            },
          },
         complete: false
       }
@@ -193,7 +222,7 @@ class VoteForm extends Component{
     inputChangeHandler = (event, controlName) => {
         this.setState({validationState: null});
         let array;
-        if (controlName === 'courses'){
+        if (controlName === 'question1'){
           array = this.state.controls[controlName].value;
           array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
         }
@@ -201,7 +230,7 @@ class VoteForm extends Component{
             ...this.state.controls,
             [controlName]: {
                 ...this.state.controls[controlName],
-                value: controlName === 'courses'? array : event.target.value,
+                value: controlName === 'question1'? array : event.target.value,
                 valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
@@ -214,8 +243,8 @@ class VoteForm extends Component{
       const target = event.target;
       let value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
-      if (name === 'courses'){
-        value = this.state.courses;
+      if (name === 'question1'){
+        value = this.state.questions;
         value.indexOf(target.value) === -1? value.push(target.value):value.splice(value.indexOf(target.value), 1);
       }
   
@@ -256,14 +285,14 @@ class VoteForm extends Component{
     }
     
     handleSubmit(e){
-        alert('Successfully submitted');
+        alert('Successfully submitted, Thank you');
         const resultsArray = {};
         for (let key in this.state.controls){
           resultsArray[key] = this.state.controls[key].value;
         }
         e.preventDefault();
         this.props.addSurvey(resultsArray);
-        this.props.history.push('/show_result');
+        this.props.history.push('/');
     }
 
     render(){
@@ -299,7 +328,7 @@ class VoteForm extends Component{
             <form className="Form" onSubmit={(e) => {
               e.preventDefault();
                //eslint-disable-next-line
-              if(confirm('Are you sure to submit?')){this.handleSubmit(e);}
+              if(confirm('Are you sure you want to submit?')){this.handleSubmit(e);}
             }}>
               {form}
               {/*<FormGroup>

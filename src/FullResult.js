@@ -115,17 +115,17 @@ class FullResult extends Component{
         <Navbar inverse collapseOnSelect className={classes.navbar}>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">SurveyApp</Link>
+              <Link to="/">Survey App</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
               <LinkContainer to="/join_course_survey" className={classes.Link}>
-                <NavItem eventKey={1}>Join Course Survey</NavItem>
+                <NavItem eventKey={1}>Join Survey</NavItem>
               </LinkContainer>
               <LinkContainer to="/show_result" className={classes.Link}>
-                <NavItem eventKey={2}>Show Results</NavItem>
+                <NavItem eventKey={2}></NavItem>
               </LinkContainer>              
             </Nav>
           {this.props.token? 
@@ -149,14 +149,14 @@ class FullResult extends Component{
           <Row className="show-grid">
           <Col lg={5} md={5} sm={5}></Col>
           <Col lg={2} md={2} sm={2}>
-          <img src="http://www.industrialui.com/wp-content/uploads/2016/12/256x256.png" className={classes.AppLogo} alt="logo" />
+          <img src="https://website38.s3-eu-west-1.amazonaws.com/shopping.png" className={classes.AppLogo} alt="logo" />
           </Col>
           <Col lg={5} md={5} sm={5}></Col>
           </Row>
           <Row className="show-grid">
           <Col lg={4} md={4} sm={4}></Col>
           <Col lg={4} md={4} sm={4}>
-          <h1 className={classes.AppTitle}>Course Prior Survey</h1>
+          <h1 className={classes.AppTitle}>Grocery Shopping Survey</h1>
           </Col>
           <Col lg={4} md={4} sm={4}></Col>
           </Row>
@@ -210,8 +210,9 @@ class FullResult extends Component{
                         <th>Email</th>
                         <th>Gender</th>
                         <th>Age</th>
-                        <th>Courses</th>
-                        <th>Note</th>
+                        <th>Are you the main grocery shopper in your household?</th>
+                        <th>How often do you shop per week</th>
+                        <th>Have you ever used technology to do your grocery shopping?</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -250,7 +251,7 @@ class FullResult extends Component{
         <Route exact path="/login" component={Auth}/>
 
         <Route exact path="/logout" render={()=>{
-          alert('successfully logout');
+          alert('successfully logged out');
           this.props.logout();
           return(<Redirect to="/login"/>)
           }}

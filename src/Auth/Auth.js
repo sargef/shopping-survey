@@ -156,7 +156,7 @@ class Auth extends Component{
             <Row>
               <Col lg={4} md={4} sm={4} xs={4} xxs={4}/>
               <Col lg={4} md={4} sm={4} xs={4} xxs={4} className={classes.title}>
-                {!this.state.isSignup? 'SIGN IN':'SIGN UP'}
+                {!this.state.isSignup === true}
               </Col>
               <Col lg={4} md={4} sm={4} xs={4} xxs={4}/>             
             </Row>
@@ -187,18 +187,7 @@ class Auth extends Component{
               </Col>
             </Row>
             <br/>
-            <Row>
-              <Col lg={12} md={12} sm={12} xs={12} xxs={12}>
-                <Button 
-                  onClick={this.switchAuthModeHandler}
-                  bsStyle='danger'
-                  bsSize="large" 
-                  block
-                >
-                  SWITCH TO {this.state.isSignup? 'SIGN IN':'SIGN UP'}
-                </Button>                
-              </Col>
-            </Row>
+     
           </div>
         </Row>
       </Grid>

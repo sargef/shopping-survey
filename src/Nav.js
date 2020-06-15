@@ -22,14 +22,14 @@ return (
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">SurveyApp</Link>
+              <Link to="/">Survey App</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1}><Link to="/join_course_survey">Join Course Survey</Link></NavItem>
-              <NavItem eventKey={2}><Link to="/show_result">Show results</Link></NavItem>
+              <NavItem eventKey={1}><Link to="/join_course_survey">Join Survey</Link></NavItem>
+              <NavItem eventKey={2}><Link to="/show_result">Results</Link></NavItem>
               <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>Action</MenuItem>
                 <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -40,13 +40,13 @@ return (
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href="#">Login</NavItem>
-              <NavItem eventKey={2} href="#">Sign up</NavItem>
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>  
         <header className={classes.header}>
           <img src="http://www.industrialui.com/wp-content/uploads/2016/12/256x256.png" className={classes.logo} alt="logo" />
-          <h1 className={classes.title}>WELCOME TO SURVEYAPP</h1>
+          <h1 className={classes.title}>WELCOME TO THE SHOPPING SURVEY</h1>
         </header>
         <br/>
         
