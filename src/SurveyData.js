@@ -10,7 +10,7 @@ const SurveyData = ({surveyDataList}) => {
         <td>{data.email}</td>
         <td>{data.gender}</td>
         <td>{data.age}</td>
-        <td>{data.question1}</td>
+        <td>Are you the main grocery shopper in your household?</td>
         <td>{data.courses.join('/ ')}</td>
         <td>{data.question3}</td>
       </tr>          

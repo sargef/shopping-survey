@@ -45,7 +45,7 @@ return (
           </Navbar.Collapse>
         </Navbar>  
         <header className={classes.header}>
-          <img src="http://www.industrialui.com/wp-content/uploads/2016/12/256x256.png" className={classes.logo} alt="logo" />
+          <img src="./images/shopping.png" className={classes.logo} alt="logo" />
           <h1 className={classes.title}>WELCOME TO THE SHOPPING SURVEY</h1>
         </header>
         <br/>

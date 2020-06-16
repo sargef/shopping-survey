@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-              question1: { 
+              'Are you the main grocery shopper in your household?': { 
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -296,6 +296,7 @@ class VoteForm extends Component{
     }
 
     render(){
+
       const formElementsArray = [];
       for (let key in this.state.controls){
         formElementsArray.push({
@@ -304,10 +305,13 @@ class VoteForm extends Component{
         })
       }
       let form = formElementsArray.map(formElement => {
+    
         return(
           <FormGroup key={formElement.id}>
           <Row>
+          {/* <ControlLabel>{this.state.controls[0]}This one</ControlLabel> */}
           <ControlLabel>{(formElement.id).toUpperCase()}</ControlLabel>
+          
           <Input
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
