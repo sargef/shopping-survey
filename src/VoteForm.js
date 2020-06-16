@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-              question1: { 
+              'Are you the main grocery shopper in your household?': { 
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -163,7 +163,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            question3: {
+            'Have you ever used technology to do your grocery shopping?': {
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -220,36 +220,36 @@ class VoteForm extends Component{
     }
     
     inputChangeHandler = (event, controlName) => {
-        this.setState({validationState: null});
-        let array;
-        if (controlName === 'courses'){
-          array = this.state.controls[controlName].value;
-          array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
-        }
-        const updateControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: controlName === 'courses'? array : event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
-                touched: true
-            }
-        }
-        this.setState({controls: updateControls});
-    }
-    
-    handleChange(event){
-      this.validationState();
-      const target = event.target;
-      let value = target.type === 'checkbox' ? target.checked : target.value;
-      const name = target.name;
-      if (name === 'courses'){
-        value = this.state.courses;
-        value.indexOf(target.value) === -1? value.push(target.value):value.splice(value.indexOf(target.value), 1);
+      this.setState({validationState: null});
+      let array;
+      if (controlName === 'courses'){
+        array = this.state.controls[controlName].value;
+        array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
       }
+      const updateControls = {
+          ...this.state.controls,
+          [controlName]: {
+              ...this.state.controls[controlName],
+              value: controlName === 'courses'? array : event.target.value,
+              valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+              touched: true
+          }
+      }
+      this.setState({controls: updateControls});
+  }
   
-      this.setState({[name]: value});
+  handleChange(event){
+    this.validationState();
+    const target = event.target;
+    let value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    if (name === 'courses'){
+      value = this.state.courses;
+      value.indexOf(target.value) === -1? value.push(target.value):value.splice(value.indexOf(target.value), 1);
     }
+
+    this.setState({[name]: value});
+  }
     validationState(){
         let count = 0;
         for (let key in this.state.controls){
@@ -271,7 +271,7 @@ class VoteForm extends Component{
 
       const emptyRemind = [];
         for (let item in this.state){
-          if (this.state[item].length === 0 && item!== 'note'){
+          if (this.state[item].length === 0 && item!== 'question1'){
             emptyRemind.push(item)
           }
         }
