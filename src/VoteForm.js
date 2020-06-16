@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-              'Are you the main grocery shopper in your household?': { 
+              question1: { 
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -163,7 +163,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            'Have you ever used technology to do your grocery shopping?': {
+            question3: {
               elementType: 'select',
               elementConfig: {
                 type: 'text',
