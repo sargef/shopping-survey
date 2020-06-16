@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-              'Are you the main grocery shopper in your household?': { 
+              'Are_you_the_main_grocery_shopper_in_your_household': { 
               elementType: 'select',
               elementConfig: {
                 type: 'text',
