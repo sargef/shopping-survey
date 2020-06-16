@@ -132,7 +132,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false,
             },
-            question2: {
+            courses: {
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -222,7 +222,7 @@ class VoteForm extends Component{
     inputChangeHandler = (event, controlName) => {
         this.setState({validationState: null});
         let array;
-        if (controlName === 'question2'){
+        if (controlName === 'courses'){
           array = this.state.controls[controlName].value;
           array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
         }
@@ -230,7 +230,7 @@ class VoteForm extends Component{
             ...this.state.controls,
             [controlName]: {
                 ...this.state.controls[controlName],
-                value: controlName === 'question2'? array : event.target.value,
+                value: controlName === 'courses'? array : event.target.value,
                 valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
@@ -243,8 +243,8 @@ class VoteForm extends Component{
       const target = event.target;
       let value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
-      if (name === 'question2'){
-        value = this.state.question2;
+      if (name === 'courses'){
+        value = this.state.courses;
         value.indexOf(target.value) === -1? value.push(target.value):value.splice(value.indexOf(target.value), 1);
       }
   
