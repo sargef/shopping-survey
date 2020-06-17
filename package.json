@@ -65,7 +65,7 @@
 
   "engines": {
     "node": "12.16.3",
-    "npm": "6.9.1"
+    "npm": "6.9.1-next.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
