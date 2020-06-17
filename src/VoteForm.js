@@ -3,6 +3,7 @@ import './App.css';
 import {Row, FormGroup, ControlLabel, Button} from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import Input from './Components/UI/Input/Input';
+import { name } from 'file-loader';
 
 
 class VoteForm extends Component{
@@ -37,7 +38,7 @@ class VoteForm extends Component{
               elementType: 'input',
               elementConfig: {
                 type: 'email',
-                placeholder: 'example@mail.com'
+                placeholder: 'example@email.com'
               },
               value: '',
               validation: {
@@ -51,7 +52,7 @@ class VoteForm extends Component{
               elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Select',
+                placeholder: 'Gender',
                 options: [
                   {
                     value: 'Female',
@@ -78,7 +79,7 @@ class VoteForm extends Component{
               elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Select',
+                placeholder: 'Age',
                 options: [
                   {
                     value: 'Under 20',
@@ -113,7 +114,7 @@ class VoteForm extends Component{
               elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Select',
+                placeholder: 'Are you the main grocery shopper in your household?',
                 options: [
                   {
                     value: 'Yes',
@@ -136,7 +137,7 @@ class VoteForm extends Component{
               elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Select',
+                placeholder: 'How many times per week do you do grocery shopping?',
                 options: [
                   {
                     value: '0-1',
@@ -167,7 +168,7 @@ class VoteForm extends Component{
               elementType: 'select',
               elementConfig: {
                 type: 'text',
-                placeholder: 'Select',
+                placeholder: 'Have you ever used technology to do your grocery shopping?',
                 options: [
                   {
                     value: 'Yes',
@@ -192,7 +193,7 @@ class VoteForm extends Component{
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.checkComplete = this.checkComplete.bind(this);
-      
+  
     }
     checkValidity(value, rules) {
         let isValid = true;
@@ -227,9 +228,7 @@ class VoteForm extends Component{
         array = this.state.controls[controlName].value;
         array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
       }
-      // if (controlName.innerHTML === 'courses'){
-      //   return ('This').innerHTML;
-      // }
+
       const updateControls = {
           ...this.state.controls,
           [controlName]: {
@@ -262,14 +261,6 @@ class VoteForm extends Component{
           }
         } 
         return count >= 7? false : true;
-    // if(this.state.name.length>0 && 
-    //     this.state.email.length>0 && 
-    //     this.state.gender.length>0 && 
-    //     this.state.age.length>0 && 
-    //     this.state.courses.length>0){
-    //     return false;
-    //   }
-    //   return true;
     }
     checkComplete(event){        
 
@@ -280,8 +271,6 @@ class VoteForm extends Component{
           }
         }
       if (emptyRemind.length > 0){
-        {/*alert(emptyRemind.join(', ')+' cannot be empty. Please complete before preceed.');
-        event.preventDefault();*/}
         this.setState({complete: false});
       }else {
         this.setState({complete: true});
@@ -296,7 +285,7 @@ class VoteForm extends Component{
         }
         e.preventDefault();
         this.props.addSurvey(resultsArray);
-        this.props.history.push('/');
+        this.props.history.push('/Thankyou');
     }
 
     render(){
@@ -308,13 +297,28 @@ class VoteForm extends Component{
           config: this.state.controls[key]
         })
       }
+ 
       let form = formElementsArray.map(formElement => {
     
         return(
           <FormGroup key={formElement.id}>
           <Row>
-          {/* <ControlLabel>{this.state.controls[0]}This one</ControlLabel> */}
-          <ControlLabel>{(formElement.id).toUpperCase()}</ControlLabel>
+
+          <ControlLabel>{(() => { switch (formElement.id) {
+            case "question1": 
+            return "Are you the main grocery shopper in your household?"
+            .toUpperCase();
+            case "courses": 
+            return "How many times per week do you do grocery shopping?"
+            .toUpperCase();
+            case "question3": 
+            return "Have you ever used technology to do your grocery shopping?"
+            .toUpperCase();
+            default: return ((formElement.id)
+            .toUpperCase())
+            }
+          })()}
+          </ControlLabel>
           <Input
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
@@ -331,146 +335,13 @@ class VoteForm extends Component{
   );
         return(
           <Row>
-            {/*<form className="Form" onSubmit={this.handleSubmit}>*/}
             <form className="Form" onSubmit={(e) => {
               e.preventDefault();
                //eslint-disable-next-line
               if(confirm('Are you sure you want to submit?')){this.handleSubmit(e);}
             }}>
               {form}
-              {/*<FormGroup>
-                <Row>
-                 <Col componentClass={ControlLabel} sm={1}>
-                  <span className="mustFill">*</span>
-                  Name
-                </Col>
-                <Col sm={5}>
-                  <FormControl
-                    type="text" 
-                    placeholder="Jane Doe"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                    className="formInput"
-                  />
-                </Col>
-                <Col componentClass={ControlLabel} sm={1}>
-                  <span className="mustFill">*</span>
-                  Email
-                </Col>
-                <Col sm={5}>
-                  <FormControl 
-                    type="email" 
-                    placeholder="janedoe@mail.com"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}  
-                    className="formInput"
-                  />
-                </Col>
-                </Row>
-              </FormGroup>
-              <br/>
-              <FormGroup>
-                <Row>
-                <Col componentClass={ControlLabel} sm={1}>
-                  <span className="mustFill">*</span>
-                  Gender
-                </Col>
-                <Col sm={3}>
-                <Radio
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  onChange={this.handleChange}
-                  inline
-                >
-                  Female
-                </Radio>
-                </Col>
-                <Col sm={2}>
-                <Radio 
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  onChange={this.handleChange}
-                  inline
-                >
-                  Male
-                </Radio>
-                </Col>
-                <Col sm={6}>
-                 <Radio 
-                  type="radio"
-                  name="gender"
-                  value="prefer not to state"
-                  onChange={this.handleChange}
-                  inline
-                >
-                  Prefer Not to state
-                </Radio>
-                </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup controlId="formControlsSelect">
-                <Row>
-                <Col componentClass={ControlLabel} sm={1}>
-                  <span className="mustFill">*</span>
-                  Age
-                </Col>
-                <Col sm={11}>
-                  <FormControl 
-                    name="age" 
-                    value={this.state.age} 
-                    onChange={this.handleChange} 
-                    componentClass="select" 
-                    placeholder="select"
-                    className="formInput"
-                  >
-                    <option value="">Select</option>
-                    <option value="under 20">Under 20</option>
-                    <option value="20-30">20-30</option>
-                    <option value="30-40">30-40</option>
-                    <option value="40-50">40-50</option>
-                  </FormControl>
-                </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup controlId="formControlsSelectMultiple">
-                <Row>
-                <ControlLabel>
-                  <span className="mustFill">*</span>
-                  Courses you're interested in
-                </ControlLabel>
-                <FormControl 
-                  name="courses" 
-                  value={this.state.courses} 
-                  onChange={this.handleChange} 
-                  multiple={true} 
-                  componentClass="select" 
-                  className="formInput"
-                >
-                  <option value="Python Django">Python Django</option>
-                  <option value="Ruby on Rails">Ruby on Rails</option>
-                  <option value="NodeJS">NodeJS</option>
-                  <option value="Machine Learning">Machine Learning</option>
-                  <option value="SQL">SQL</option>
-                </FormControl>
-                </Row>
-              </FormGroup>
-              <FormGroup controlId="formControlsTextarea">
-                <Row>
-                <ControlLabel>Is there any other topics you'd like to learn?</ControlLabel>
-                <FormControl 
-                  componentClass="textarea" 
-                  placeholder="Enter text..."
-                  name="note"
-                  value={this.state.note}
-                  onChange={this.handleChange}
-                  className="formInput"
-                />
-                </Row>
-              </FormGroup>*/}
+              
               <Row>
               <Button className="button" bsSize="large" type="submit" block disabled={this.validationState()}> {/*disabled={this.validationState()}*/}
                 SUBMIT

@@ -9,6 +9,7 @@ import classes from './App.css';
 import * as apiCalls from './api';
 import * as actions from './store/actions/index';
 import VoteForm from './VoteForm';
+import Thankyou from './Components/UI/Thankyou/Thankyou';
 import Results from './Results';
 import Auth from './Auth/Auth';
 import SurveyData from './SurveyData';
@@ -247,9 +248,8 @@ class FullResult extends Component{
           (<Redirect to="/join_course_survey"/>
           )
         }/>
-        
         <Route exact path="/login" component={Auth}/>
-
+        <Route exact path="/Thankyou" component={Thankyou}/>
         <Route exact path="/logout" render={()=>{
           alert('successfully logged out');
           this.props.logout();
