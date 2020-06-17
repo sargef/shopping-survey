@@ -311,13 +311,12 @@ class VoteForm extends Component{
       let form = formElementsArray.map(formElement => {
     
         return(
-          
+          <FormGroup key={formElement.id}>
           <Row>
           {/* <ControlLabel>{this.state.controls[0]}This one</ControlLabel> */}
         <ControlLabel>
         
         </ControlLabel>
-        <FormGroup key={formElement.id}>
           <Input
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
@@ -327,9 +326,8 @@ class VoteForm extends Component{
             touched={formElement.config.touched}
             changed={(event) => this.inputChangeHandler(event, formElement.id)}
           />
-          </FormGroup>
           </Row>
-          
+          </FormGroup>
       );
     }
   );
