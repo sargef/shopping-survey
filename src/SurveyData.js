@@ -2,6 +2,7 @@ import React from 'react';
 
 const SurveyData = ({surveyDataList}) => {
     const surveyData = surveyDataList.map((data, i) => {
+      
       return(
         
       <tr key={data._id}>
@@ -10,7 +11,7 @@ const SurveyData = ({surveyDataList}) => {
         <td>{data.email}</td>
         <td>{data.gender}</td>
         <td>{data.age}</td>
-        <td>{data.Are_you_the_main_grocery_shopper_in_your_household}</td>
+        <td>{data.question1}</td>
         <td>{data.courses.join('/ ')}</td>
         <td>{data.question3}</td>
       </tr>          

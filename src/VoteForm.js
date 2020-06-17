@@ -109,7 +109,7 @@ class VoteForm extends Component{
               valid: false,
               touched: false
             },
-              'Are_you_the_main_grocery_shopper_in_your_household': { 
+             question1: { 
               elementType: 'select',
               elementConfig: {
                 type: 'text',
@@ -192,6 +192,7 @@ class VoteForm extends Component{
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.checkComplete = this.checkComplete.bind(this);
+      
     }
     checkValidity(value, rules) {
         let isValid = true;
@@ -226,6 +227,9 @@ class VoteForm extends Component{
         array = this.state.controls[controlName].value;
         array.indexOf(event.target.value) === -1? array.push(event.target.value):array.splice(array.indexOf(event.target.value), 1);
       }
+      // if (controlName.innerHTML === 'courses'){
+      //   return ('This').innerHTML;
+      // }
       const updateControls = {
           ...this.state.controls,
           [controlName]: {
@@ -307,11 +311,13 @@ class VoteForm extends Component{
       let form = formElementsArray.map(formElement => {
     
         return(
-          <FormGroup key={formElement.id}>
+          
           <Row>
           {/* <ControlLabel>{this.state.controls[0]}This one</ControlLabel> */}
-          <ControlLabel>{(formElement.id).toUpperCase()}</ControlLabel>
-          
+        <ControlLabel>
+        
+        </ControlLabel>
+        <FormGroup key={formElement.id}>
           <Input
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
@@ -321,8 +327,9 @@ class VoteForm extends Component{
             touched={formElement.config.touched}
             changed={(event) => this.inputChangeHandler(event, formElement.id)}
           />
-          </Row>
           </FormGroup>
+          </Row>
+          
       );
     }
   );
