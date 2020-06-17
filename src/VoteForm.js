@@ -296,7 +296,7 @@ class VoteForm extends Component{
         }
         e.preventDefault();
         this.props.addSurvey(resultsArray);
-        this.props.history.push('/');
+        this.props.history.push('/thankyou');
     }
 
     render(){
@@ -314,9 +314,7 @@ class VoteForm extends Component{
           <FormGroup key={formElement.id}>
           <Row>
           {/* <ControlLabel>{this.state.controls[0]}This one</ControlLabel> */}
-        <ControlLabel>
-        
-        </ControlLabel>
+          <ControlLabel>{(formElement.id).toUpperCase()}</ControlLabel>
           <Input
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
