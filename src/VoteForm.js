@@ -296,7 +296,7 @@ class VoteForm extends Component{
         }
         e.preventDefault();
         this.props.addSurvey(resultsArray);
-        this.props.history.push('/thankyou');
+        this.props.history.push('/');
     }
 
     render(){
