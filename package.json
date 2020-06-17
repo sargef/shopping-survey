@@ -62,6 +62,11 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
+
+  "engines": {
+    "node": ">=12.16.3",
+    "npm": ">=6.9.1"
+  },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "devDependencies": {},
