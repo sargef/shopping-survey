@@ -3,8 +3,6 @@ import './App.css';
 import {Row, FormGroup, ControlLabel, Button} from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import Input from './Components/UI/Input/Input';
-import { name } from 'file-loader';
-
 
 class VoteForm extends Component{
     constructor(props){
